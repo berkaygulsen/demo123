@@ -24,7 +24,7 @@ const EditForm = () => {
   return (
     <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
       <Form.Item name={['user', 'name']} label="Name" rules={[{ required: true }]}>
-        <Input />
+        <Input value={} />
       </Form.Item>
       <Form.Item name={['user', 'email']} label="Email" rules={[{ type: 'email' }]}>
         <Input />
@@ -47,9 +47,8 @@ const EditForm = () => {
   );
 };
 
-export const Edit = ({ visible, callBack }) => {
+export const Edit = ({ visible, callBack, clickedItems }) => {
 
-  const [modalStatus, setModalStatus] = useState({visible: visible})
 
 
 
@@ -57,7 +56,7 @@ export const Edit = ({ visible, callBack }) => {
 
       <Modal
         title="Edit"
-        visible={modalStatus}
+        visible={visible}
         onOk={() => callBack()}
         onCancel={ () => callBack()}>
       <EditForm />
